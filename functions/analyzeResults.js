@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+require("mongoose");
 const dbConnect = require("../db/dbConnect");
 const dbDisconnect = require("../db/dbDisconnect");
 
@@ -12,7 +12,6 @@ module.exports = async function () {
   result.forEach((o) => {
     o.results.forEach((a) => {
       resultsArray.push(a);
-      console.log(a);
     });
   });
 
@@ -32,14 +31,14 @@ module.exports = async function () {
   console.log("\nCWD RESULTS\n");
   console.log("Total: " + resultsArray.length + " tests");
   console.log(
-    "Negative: " +
+    "Negative (healthy): " +
       neg +
       " cases = " +
       Math.round((100 * neg) / resultsArray.length) +
       "%"
   );
   console.log(
-    "Positive: " +
+    "Positive (sick): " +
       pos +
       " cases = " +
       Math.round((100 * pos) / resultsArray.length) +
