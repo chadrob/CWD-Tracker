@@ -1,13 +1,9 @@
 const mongoose = require("mongoose");
 
-module.exports = function (Test) {
-  // read data from database
-  async function getTests() {
-    const test = await Test.findOne({}, {}, { sort: { created_at: -1 } });
-    if (test) {
-      return test;
-    }
-    return null;
+module.exports = async function (Log, currentPost) {
+  const log = await Log.findOne({ title: currentPost });
+  if (log) {
+    return true;
   }
-  return getTests();
+  return false;
 };
